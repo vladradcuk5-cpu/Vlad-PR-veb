@@ -1,0 +1,64 @@
+<h1>Студенти групи</h1>
+
+<h2>Список студентів</h2>
+
+<div>
+  @for (student of students; track student.id) {
+    <div>
+      <h3>{{ student.name }}</h3>
+
+      <p>Вік: {{ student.age }}</p>
+
+      <p>Середня оцінка: {{ student.grade }}</p>
+
+      <button (click)="removeStudent(student.id)">
+        Видалити
+      </button>
+    </div>
+
+    <hr>
+  }
+</div>
+
+<h2>Додати студента</h2>
+
+<form (submit)="addStudent()">
+
+  <div>
+    <label>Ім'я:</label>
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label>Вік:</label>
+    <input
+      type="number"
+      [(ngModel)]="age"
+      name="age"
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label>Середня оцінка:</label>
+    <input
+      type="number"
+      [(ngModel)]="grade"
+      name="grade"
+    >
+  </div>
+
+  <br>
+
+  <button type="submit">
+    Додати студента
+  </button>
+
+</form>
