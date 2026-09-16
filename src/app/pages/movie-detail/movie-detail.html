@@ -1,0 +1,37 @@
+<section class="detail-page">
+
+  <div *ngIf="movie; else notFound">
+
+    <h1> {{ movie.title }}</h1>
+
+    <p>
+      <strong>Рік:</strong>
+      {{ movie.year }}
+    </p>
+
+    <p>
+      <strong>Рейтинг:</strong>
+      {{ movie.rating }}/10
+    </p>
+
+    <a routerLink="/movies" class="back-btn">
+      ← Назад до списку
+    </a>
+
+  </div>
+
+  <ng-template #notFound>
+
+    <h1>Фільм не знайдено</h1>
+
+    <p>
+      Фільму з таким id не існує.
+    </p>
+
+    <a routerLink="/movies" class="back-btn">
+      ← Повернутися до фільмів
+    </a>
+
+  </ng-template>
+
+</section>

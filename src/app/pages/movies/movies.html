@@ -1,0 +1,30 @@
+<section>
+  <h1>🎬 Список фільмів</h1>
+
+  <div class="movies-grid">
+
+    <div class="movie-card" *ngFor="let movie of movies">
+
+      <h2>{{ movie.title }}</h2>
+
+      <p>
+        <strong>Рік:</strong> {{ movie.year }}
+      </p>
+
+      <p>
+        <strong>Рейтинг:</strong>
+        {{ movie.rating }}/10
+      </p>
+
+      <a
+        [routerLink]="['/movie', movie.id]"
+        class="details-btn">
+
+        Переглянути деталі
+
+      </a>
+
+    </div>
+
+  </div>
+</section>
