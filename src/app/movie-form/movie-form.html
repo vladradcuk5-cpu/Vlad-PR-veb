@@ -1,0 +1,69 @@
+<h2>Додати фільм</h2>
+
+<form #form="ngForm" (ngSubmit)="addMovie(form)">
+
+  <div class="field">
+    <label>Назва фільму</label><br>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      #titleField="ngModel"
+      required
+      minlength="3"
+      maxlength="50"
+    >
+    <div class="error" *ngIf="titleField.invalid && (titleField.touched || form.submitted)">
+      <p *ngIf="titleField.errors?.['required']">Введіть назву фільму</p>
+      <p *ngIf="titleField.errors?.['minlength']">Назва повинна містити мінімум 3 символи</p>
+      <p *ngIf="titleField.errors?.['maxlength']">Назва повинна містити максимум 50 символів</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Режисер</label><br>
+    <input
+      type="text"
+      name="director"
+      [(ngModel)]="director"
+      #directorField="ngModel"
+      required
+      minlength="3"
+      maxlength="40"
+    >
+    <div class="error" *ngIf="directorField.invalid && (directorField.touched || form.submitted)">
+      <p *ngIf="directorField.errors?.['required']">Вкажіть режисера</p>
+      <p *ngIf="directorField.errors?.['minlength']">Ім'я режисера повинно містити мінімум 3 символи</p>
+      <p *ngIf="directorField.errors?.['maxlength']">Ім'я режисера повинно містити максимум 40 символів</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Опис</label><br>
+    <textarea
+      name="description"
+      rows="4"
+      cols="40"
+      [(ngModel)]="description"
+      #descriptionField="ngModel"
+      required
+      minlength="10"
+      maxlength="200"
+    ></textarea>
+    <div class="error" *ngIf="descriptionField.invalid && (descriptionField.touched || form.submitted)">
+      <p *ngIf="descriptionField.errors?.['required']">Опис обов'язковий</p>
+      <p *ngIf="descriptionField.errors?.['minlength']">Опис повинен містити мінімум 10 символів</p>
+      <p *ngIf="descriptionField.errors?.['maxlength']">Опис повинен містити максимум 200 символів</p>
+    </div>
+  </div>
+
+  <button type="submit">Додати фільм</button>
+</form>
+
+<hr>
+
+<div *ngFor="let movie of movies" class="movie">
+  <h3>{{ movie.title }}</h3>
+  <p>Режисер: {{ movie.director }}</p>
+  <p>Опис: {{ movie.description }}</p>
+</div>
